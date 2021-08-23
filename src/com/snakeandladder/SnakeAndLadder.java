@@ -12,6 +12,7 @@ public class SnakeAndLadder {
 		
 
 		int position = 0;
+		int count = 0;
 		System.out.println("Single player is at postion "+position);
 		
 		Random random = new Random();
@@ -36,9 +37,12 @@ public class SnakeAndLadder {
 			
 			if(position>100)
 				position-= dieNum;
-		
-		}
 			
+			count++;
+			System.out.println("Position after every die roll: "+position);
+		}
+		System.out.println("Final Player position is : "+position);
+		System.out.println("No. of time the dice used : "+count);
 	}
 
 }
