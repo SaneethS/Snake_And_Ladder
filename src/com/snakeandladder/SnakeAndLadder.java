@@ -6,43 +6,61 @@ public class SnakeAndLadder {
 	public static final int NO_PLAY = 1;
 	public static final int LADDER = 2;
 	public static final int SNAKE =3;
+	public static int count = 0;
+	public static Random random = new Random();
+	public static int dieNum=0;
+	
+	public static int diePlay(int position) {
+	
+		int dieNum = random.nextInt(7-1)+1;
+		System.out.println("Dice number : "+dieNum);
 
+		int choice = random.nextInt(4-1)+1;
+
+		if(choice == NO_PLAY){
+			System.out.println("No Play");
+		}else if(choice == LADDER) {
+			System.out.println("Player inclined by "+dieNum);
+			position+=dieNum;
+		}else if(choice == SNAKE) {
+			System.out.println("Player declined by "+dieNum);
+			position-=dieNum;
+		}
+		if(position<0)
+			position = 0;
+		
+		if(position>100)
+			position-= dieNum;
+		
+		count++;
+		
+		return position;
+	}
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Problem");
 		
-
-		int position = 0;
-		int count = 0;
-		System.out.println("Single player is at postion "+position);
+		int player1Pos = 0;
+		int player2Pos = 0;
 		
-		Random random = new Random();
-		
-		while(position != 100) {
-				int dieNum = random.nextInt(7-1)+1;
-				System.out.println("Dice number : "+dieNum);
-		
-			int choice = random.nextInt(4-1)+1;
-		
-			if(choice == NO_PLAY){
-				System.out.println("No Play");
-			}else if(choice == LADDER) {
-				System.out.println("Player inclined by "+dieNum);
-				position+=dieNum;
-			}else if(choice == SNAKE) {
-				System.out.println("Player declined by "+dieNum);
-				position-=dieNum;
-			}
-			if(position<0)
-				position = 0;
+		while(player1Pos != 100 && player2Pos !=100) {
 			
-			if(position>100)
-				position-= dieNum;
+			System.out.println("Player 1 is playing");
+			player1Pos = diePlay(player1Pos);
+			System.out.println("Player 1 position : "+player1Pos);
 			
-			count++;
-			System.out.println("Position after every die roll: "+position);
+			System.out.println("Player 2 is playing");
+			player2Pos = diePlay(player2Pos);
+			System.out.println("Player 2 position : "+player2Pos);
+			
+			
 		}
-		System.out.println("Final Player position is : "+position);
-		System.out.println("No. of time the dice used : "+count);
+		
+		if(player1Pos == 100)
+			System.out.println("Player 1 has Won.");
+		else
+			System.out.println("Player 2 has Won.");
+		
+		System.out.println("No. of times the die rolled is : "+count);
 	}
 
 }
