@@ -33,6 +33,9 @@ public class SnakeAndLadder {
 			}
 			if(position<0)
 				position = 0;
+			
+			if(position>100)
+				position-= dieNum;
 		
 		}
 			
