@@ -22,6 +22,7 @@ public class SnakeAndLadder {
 		}else if(choice == LADDER) {
 			System.out.println("Player inclined by "+dieNum);
 			position+=dieNum;
+			position = diePlay(position);
 		}else if(choice == SNAKE) {
 			System.out.println("Player declined by "+dieNum);
 			position-=dieNum;
